@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { CgGitFork } from "react-icons/cg";
+import Logo from "./Logo";
 
 import {
   AiFillStar,
@@ -34,12 +35,7 @@ function NavBar() {
     >
       <Container>
         <Navbar.Brand href="/" className="d-flex">
-          <p
-            className="purple"
-            style={{ fontSize: 30, fontWeight: 800, paddingTop: 10 }}
-          >
-            Js
-          </p>
+          <Logo height={40} style={{ marginTop: 6 }} />
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"

@@ -4,15 +4,17 @@ import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
 import getccn from "../../Assets/Projects/getccn.png";
 import net512 from "../../Assets/Projects/net512.png";
-import lasermachine from "../../Assets/Projects/lasermachine.png";
 import rcdigital from "../../Assets/Projects/rcdigital.png";
 import imawc from "../../Assets/Projects/imawc.png";
 import autohub from "../../Assets/Projects/autohub.png";
 import oconee from "../../Assets/Projects/oraj.png";
 import akr from "../../Assets/Projects/akr.png";
 import pima from "../../Assets/Projects/pimaortho.png";
-import nextJSportfolio from "../../Assets/Projects/nextJS portfolio.png"
 import partstman from "../../Assets/Projects/partsman.png";
+import dcwdBilling from "../../Assets/Projects/dcwd-billing.png";
+import dcwdDma from "../../Assets/Projects/dcwd-dma.png";
+import atchupikolq from "../../Assets/Projects/atchupikolq.png";
+import expenseMonitoring from "../../Assets/Projects/expense-monitoring.png";
 
 function Projects() {
   return (
@@ -25,7 +27,26 @@ function Projects() {
         <p style={{ color: "white" }}>
           Here are a few projects I've worked on recently.
         </p>
+        <h2 className="project-subheading">
+          Websites & Web <strong className="purple">Apps</strong>
+        </h2>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={dcwdBilling}
+              isBlog={false}
+              title="Davao City Water District Billing and Collection System"
+              description="A web-based system for Davao City Water District that manages service connections, meter reading, billing and collections, with a dashboard for tracking collections and customer satisfaction."
+            />
+          </Col>
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={dcwdDma}
+              isBlog={false}
+              title="Davao City Water District District Metering Area System"
+              description="A web application for monitoring District Metering Areas (DMAs) and non-revenue water, with DMA details, statistics, charts and map views."
+            />
+          </Col>
           <Col md={4} className="project-card">
             <ProjectCard
               imgPath={getccn}
@@ -35,7 +56,6 @@ function Projects() {
               demoLink="https://getccn.com/"
             />
           </Col>
-
           <Col md={4} className="project-card">
             <ProjectCard
               imgPath={net512}
@@ -45,17 +65,6 @@ function Projects() {
               demoLink="https://www.net512.com/"
             />
           </Col>
-
-          <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={lasermachine}
-              isBlog={false}
-              title="Laser-Machine.co.uk"
-              description="Laser Hair Removal Machines: One-Stop-Shop for Medical Grade Lasers - Empower your business by providing the most effective & efficient services with our premium machines."
-              demoLink="https://laser-machine.co.uk/"
-            />
-          </Col>
-
           <Col md={4} className="project-card">
             <ProjectCard
               imgPath={rcdigital}
@@ -65,7 +74,6 @@ function Projects() {
               demoLink="https://www.rcdigital.us/"
             />
           </Col>
-
           <Col md={4} className="project-card">
             <ProjectCard
               imgPath={imawc}
@@ -75,7 +83,6 @@ function Projects() {
               demoLink="https://imawc.rcdigital.us/"
             />
           </Col>
-
           <Col md={4} className="project-card">
             <ProjectCard
               imgPath={autohub}
@@ -112,13 +119,26 @@ function Projects() {
               demoLink="https://pimaortho.com/"
             />
           </Col>
+        </Row>
+
+        <h2 className="project-subheading">
+          Mobile <strong className="purple">Apps</strong>
+        </h2>
+        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={nextJSportfolio}
+              imgPath={atchupikolq}
               isBlog={false}
-              title="Suaybaguio NextJS Portfolio"
-              description="My website portfolio showcases my work, skillfully crafted in NextJS for a dynamic and engaging user experience. Developed during a bootcamp, reflects my early journey into app and web development, highlighting newfound skills and projects."
-              ghLink="https://github.com/swedr13/nextJS-portfolio"
+              title="AtchupikolQ"
+              description="A mobile-friendly pickleball open play app for managing play sessions, courts, player check-ins and match queues."
+            />
+          </Col>
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={expenseMonitoring}
+              isBlog={false}
+              title="My Expense Monitoring"
+              description="A mobile-friendly app for recording daily expenses by category and reviewing past records with daily totals."
             />
           </Col>
           <Col md={4} className="project-card">
