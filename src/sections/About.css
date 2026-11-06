@@ -1,0 +1,65 @@
+@layer components {
+  .about__grid {
+    display: grid;
+    gap: var(--sp-12);
+    align-items: start;
+  }
+  .about__media { max-width: 22rem; width: 70%; }
+  .about__frame {
+    position: relative;
+    border-radius: var(--r-lg);
+    transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition: transform var(--dur-3) var(--ease-out);
+    transform-style: preserve-3d;
+  }
+  .about__frame::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    border-radius: inherit;
+    background: linear-gradient(140deg, var(--c-accent), var(--c-accent-2) 60%, transparent);
+    filter: blur(28px);
+    opacity: 0.45;
+  }
+  .about__photo {
+    aspect-ratio: 1;
+    border-radius: var(--r-lg);
+    border: 1px solid var(--c-border-strong);
+  }
+  .about__body { display: grid; gap: var(--sp-6); }
+  .about__body .section__head { margin-bottom: var(--sp-2); }
+  .about__bio { max-width: var(--measure); color: var(--c-text-muted); }
+
+  .quote {
+    margin: var(--sp-4) 0;
+    padding-left: var(--sp-6);
+    border-left: 2px solid var(--c-accent);
+  }
+  .quote p:first-child { font-size: var(--step-2); line-height: 1.2; }
+  .quote .quote__cite { margin-top: var(--sp-3); color: var(--c-text-muted); }
+
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: var(--sp-3);
+  }
+  .facts__item {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: var(--sp-1);
+    padding: var(--sp-4);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-md);
+    background: color-mix(in oklab, var(--c-surface) 70%, transparent);
+  }
+  .facts__item dd { font-size: var(--step-1); font-weight: 650; letter-spacing: -0.02em; line-height: 1.1; }
+  .facts__item dt { color: var(--c-text-muted); }
+
+  .about__social { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-4); color: var(--c-text-muted); }
+
+  @media (min-width: 48rem) {
+    .about__grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(var(--sp-8), 6vw, var(--sp-16)); }
+    .about__media { width: 100%; position: sticky; top: calc(var(--header-h) + var(--sp-8)); }
+  }
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Initial JS (React 19 ≈ 69 KB gz + app)",
+    "path": "dist/assets/index-*.js",
+    "gzip": true,
+    "limit": "100 KB"
+  },
+  {
+    "name": "3D chunk (lazy, tier ≥ 1 only)",
+    "path": "dist/assets/scene-*.js",
+    "gzip": true,
+    "limit": "150 KB"
+  },
+  {
+    "name": "HTML incl. inlined CSS + pre-rendered markup",
+    "path": "dist/index.html",
+    "gzip": true,
+    "limit": "40 KB"
+  }
+]

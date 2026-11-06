@@ -1,0 +1,38 @@
+@layer components {
+  .picture {
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: top center;
+    background-color: var(--c-surface-2);
+  }
+  /* Shimmer skeleton until the image has decoded. */
+  .picture::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, transparent 30%, rgb(255 255 255 / 0.12) 50%, transparent 70%);
+    background-size: 220% 100%;
+    animation: shimmer 1.4s linear infinite;
+    transition: opacity var(--dur-3) var(--ease-out);
+  }
+  .picture.is-loaded::after { opacity: 0; animation: none; }
+  .picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: opacity var(--dur-4) var(--ease-out), scale var(--dur-4) var(--ease-out);
+  }
+  /* Only fade in when JS is running to un-hide it; without JS images show normally. */
+  :root.js .picture:not(.is-loaded) img { opacity: 0; }
+  :root:not(.js) .picture::after { display: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .picture::after { animation: none; }
+  }
+  @keyframes shimmer {
+    from { background-position: 120% 0; }
+    to { background-position: -120% 0; }
+  }
+}

@@ -1,0 +1,78 @@
+@layer components {
+  .contact {
+    /* No content-visibility here: paint containment would trap the fixed-position toast. */
+    content-visibility: visible;
+    overflow: hidden;
+    isolation: isolate;
+    text-align: center;
+  }
+  .contact__orb {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: -1;
+    width: min(56rem, 140vw);
+    translate: -50% -50%;
+    opacity: 0.22;
+  }
+  .contact__inner {
+    display: grid;
+    justify-items: center;
+    gap: var(--sp-6);
+  }
+  .contact__title {
+    font-size: var(--step-4);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    max-width: 14ch;
+  }
+  .contact__lede { margin-inline: auto; }
+  .contact__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--sp-3);
+  }
+  .contact__email { max-width: 100%; overflow-wrap: anywhere; }
+  .contact__actions .btn[disabled] { opacity: 0.6; cursor: not-allowed; }
+  .contact__social { display: grid; justify-items: center; gap: var(--sp-3); }
+  .contact__where { color: var(--c-text-muted); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .contact__title {
+        animation: contact-bloom linear both;
+        animation-timeline: view();
+        animation-range: entry 10% cover 40%;
+      }
+    }
+  }
+  @keyframes contact-bloom {
+    from { scale: 0.96; opacity: 0.4; }
+    to { scale: 1; opacity: 1; }
+  }
+
+  /* Toast */
+  .toast-region {
+    position: fixed;
+    left: 50%;
+    bottom: max(var(--sp-6), env(safe-area-inset-bottom));
+    z-index: 70;
+    translate: -50% 0;
+    pointer-events: none;
+  }
+  .toast {
+    padding: var(--sp-3) var(--sp-6);
+    border: 1px solid var(--c-border-strong);
+    border-radius: var(--r-pill);
+    background: var(--c-surface-2);
+    color: var(--c-text);
+    font-size: var(--step--1);
+    font-weight: 500;
+    box-shadow: var(--shadow-2);
+    transition: opacity var(--dur-3) var(--ease-out), translate var(--dur-3) var(--ease-out);
+  }
+  @starting-style {
+    .toast { opacity: 0; translate: 0 8px; }
+  }
+}

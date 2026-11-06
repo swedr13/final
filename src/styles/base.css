@@ -1,0 +1,74 @@
+@layer reset {
+  *, *::before, *::after { box-sizing: border-box; }
+  * { margin: 0; }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  img, picture, svg, video, canvas { display: block; max-width: 100%; }
+  input, button, textarea, select { font: inherit; color: inherit; }
+  button { cursor: pointer; background: none; border: 0; padding: 0; }
+  a { color: inherit; }
+  ul[role="list"], ol[role="list"] { list-style: none; padding: 0; }
+  p, h1, h2, h3, h4 { overflow-wrap: break-word; }
+}
+
+@layer base {
+  html {
+    background: var(--c-bg);
+    transition: background-color var(--dur-3) var(--ease-out);
+    scroll-padding-top: calc(var(--header-h) + 16px);
+    scrollbar-color: color-mix(in oklab, var(--c-accent) 55%, transparent) transparent;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+  html:has(#mobile-menu[open]) { overflow: clip; }
+
+  body {
+    min-height: 100svh;
+    color: var(--c-text);
+    font-family: var(--font-sans);
+    font-size: var(--step-0);
+    line-height: var(--lh-body);
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+    transition: color var(--dur-3) var(--ease-out);
+  }
+
+  h1, h2, h3 { line-height: var(--lh-tight); letter-spacing: -0.02em; text-wrap: balance; }
+  h2 { font-size: var(--step-3); font-weight: 650; }
+  h3 { font-size: var(--step-1); font-weight: 600; }
+  p { text-wrap: pretty; }
+
+  .serif { font-family: var(--font-display); font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+  .accent { color: var(--c-accent); }
+  .mono { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.02em; }
+
+  ::selection { background: var(--c-accent); color: var(--c-accent-ink); }
+
+  :focus-visible {
+    outline: 2px solid var(--c-focus);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  main:focus { outline: none; }
+
+  @media (forced-colors: active) {
+    :focus-visible { outline-color: Highlight; }
+  }
+}
+
+@layer utilities {
+  .visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+}

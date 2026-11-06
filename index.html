@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Junelle Suaybaguio — Full-Stack Developer</title>
+    <meta name="description" content="Junelle Suaybaguio is a full-stack developer in Davao City, Philippines, building production web apps with TypeScript and C# .NET, plus WordPress, React and React Native work." />
+    <link rel="canonical" href="https://swedr13.github.io/final/" />
+
+    <!-- Theme: applied before first paint so there is never a flash. Also flags JS + scroll-driven support. -->
+    <script>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add("js");
+        if (location.hash) d.classList.add("cv-settled");
+        try {
+          var t = localStorage.getItem("theme");
+          if (t === "light" || t === "dark") d.dataset.theme = t;
+          if (localStorage.getItem("motion") === "paused") d.classList.add("motion-paused");
+        } catch (e) {}
+        try {
+          if (CSS.supports("animation-timeline: view()")) d.classList.add("sd-reveal");
+        } catch (e) {}
+      })();
+    </script>
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0b0a12" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#faf9fc" />
+    <meta name="color-scheme" content="dark light" />
+
+    <link rel="preload" href="/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Junelle Suaybaguio" />
+    <meta property="og:title" content="Junelle Suaybaguio — Full-Stack Developer" />
+    <meta property="og:description" content="Full-stack developer in Davao City building production web apps with TypeScript and C# .NET, plus WordPress, React and React Native work." />
+    <meta property="og:url" content="https://swedr13.github.io/final/" />
+    <meta property="og:image" content="https://swedr13.github.io/final/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Junelle Suaybaguio — brings designs to life." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Junelle Suaybaguio — Full-Stack Developer" />
+    <meta name="twitter:description" content="Full-stack developer in Davao City building production web apps with TypeScript and C# .NET." />
+    <meta name="twitter:image" content="https://swedr13.github.io/final/og-image.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Junelle Suaybaguio",
+        "jobTitle": "Full-Stack Developer",
+        "url": "https://swedr13.github.io/final/",
+        "image": "https://swedr13.github.io/final/og-image.png",
+        "address": { "@type": "PostalAddress", "addressLocality": "Davao City", "addressCountry": "PH" },
+        "worksFor": { "@type": "Organization", "name": "Davao City Water District" },
+        "sameAs": [
+          "https://github.com/swedr13",
+          "https://www.linkedin.com/in/junelle-suaybaguio/",
+          "https://www.facebook.com/junelle13/",
+          "https://www.instagram.com/junelle.suaybaguio/"
+        ],
+        "knowsAbout": ["TypeScript", "C#", ".NET", "React", "Next.js", "React Native", "WordPress", "PHP"]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"><!--app--></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

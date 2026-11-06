@@ -1,0 +1,165 @@
+@layer components {
+  .hero {
+    position: relative;
+    min-height: calc(100svh - var(--header-h));
+    display: grid;
+    align-items: center;
+    padding-block: clamp(var(--sp-8), 6vh, var(--sp-16)) var(--sp-16);
+    isolation: isolate;
+  }
+  .hero__grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    align-items: center;
+  }
+  .hero__copy {
+    position: relative;
+    z-index: 2;
+    grid-column: 1 / -1;
+    grid-row: 1;
+    display: grid;
+    gap: var(--sp-6);
+    max-width: 44rem;
+  }
+  .hero .hero__stage {
+    grid-row: 1;
+    z-index: 1;
+  }
+
+  .hero__title {
+    display: grid;
+    gap: 0.08em;
+    font-size: var(--step-4);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+  }
+  .hero__name { display: block; }
+  .hero__tagline {
+    display: block;
+    color: var(--c-accent);
+    font-size: 0.86em;
+    line-height: 1.08;
+  }
+
+  /* Rotating roles (pure CSS, identical on server and client). */
+  .hero__roles { font-size: var(--step-1); font-weight: 500; }
+  .rotator { display: inline-flex; align-items: baseline; gap: 0.35em; }
+  .rotator__prefix { color: var(--c-accent); font-size: 0.8em; }
+  .rotator__window {
+    display: inline-block;
+    height: 1.35em;
+    overflow: hidden;
+    vertical-align: bottom;
+  }
+  .rotator__track { display: flex; flex-direction: column; }
+  .rotator__item { display: block; height: 1.35em; line-height: 1.35em; white-space: nowrap; }
+  @media (prefers-reduced-motion: no-preference) {
+    .rotator__track { animation: roles 9s var(--ease-in-out) infinite; }
+  }
+  @keyframes roles {
+    0%, 28% { transform: translateY(0); }
+    33%, 61% { transform: translateY(-1.35em); }
+    66%, 94% { transform: translateY(-2.7em); }
+    100% { transform: translateY(-4.05em); }
+  }
+
+  .hero__intro {
+    color: var(--c-text-muted);
+    font-size: var(--step-0);
+    max-width: 46ch;
+  }
+  .hero__ctas { display: flex; flex-wrap: wrap; gap: var(--sp-3); }
+  .hero__cta-meta {
+    margin-left: 0.4em;
+    color: var(--c-text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.75em;
+    font-weight: 500;
+  }
+
+  .hero__scroll {
+    position: absolute;
+    left: 50%;
+    bottom: var(--sp-4);
+    translate: -50% 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-2);
+    min-width: var(--tap);
+    padding: var(--sp-2);
+    color: var(--c-text-muted);
+    text-decoration: none;
+  }
+  .hero__scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(var(--c-accent), transparent);
+    transform-origin: top;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero__scroll-line { animation: scroll-cue 2.4s var(--ease-in-out) infinite; }
+  }
+  @keyframes scroll-cue {
+    0% { scale: 1 0; opacity: 1; }
+    60% { scale: 1 1; opacity: 1; }
+    100% { scale: 1 1; opacity: 0; }
+  }
+
+  /* User pause for all looping motion (WCAG 2.2.2). Hidden when the OS already asks for reduced motion. */
+  .motion-toggle {
+    position: absolute;
+    left: var(--gutter);
+    bottom: var(--sp-4);
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2);
+    min-height: var(--tap);
+    padding-inline: var(--sp-3);
+    border-radius: var(--r-pill);
+    color: var(--c-text-muted);
+    font-size: var(--step--1);
+    font-weight: 500;
+    transition: color var(--dur-2), background-color var(--dur-2);
+  }
+  .motion-toggle:hover { color: var(--c-text); background: var(--c-surface-2); }
+  .motion-toggle svg { width: 14px; height: 14px; fill: currentColor; }
+  @media (prefers-reduced-motion: reduce) {
+    .motion-toggle { display: none; }
+  }
+  @media (min-width: 48rem) {
+    .motion-toggle { left: max(var(--gutter), calc((100% - var(--container)) / 2)); }
+  }
+  :root.motion-paused .rotator__track,
+  :root.motion-paused .hero__poster,
+  :root.motion-paused .hero__scroll-line,
+  :root.motion-paused .picture::after {
+    animation-play-state: paused;
+  }
+
+  /* Mobile: orb sits top-right, partly cropped by the hero (overflow clip, so no sideways scroll). */
+  @media (max-width: 47.99rem) {
+    .hero { align-items: end; overflow-x: clip; }
+    .hero .hero__stage {
+      position: absolute;
+      top: 0;
+      right: -14vw;
+      width: 72vw;
+      max-width: 24rem;
+    }
+    .hero__copy {
+      padding-top: min(64vw, 20rem);
+    }
+  }
+
+  @media (min-width: 48rem) {
+    .hero__copy { grid-column: 1 / span 7; }
+    .hero .hero__stage { grid-column: 6 / -1; max-width: 40rem; justify-self: end; }
+    .hero__scroll { display: flex; }
+  }
+  @media (min-width: 64rem) {
+    .hero .hero__stage { grid-column: 7 / -1; }
+  }
+}

@@ -1,0 +1,82 @@
+@layer components {
+  .resume__grid { display: grid; gap: var(--sp-8); align-items: start; }
+  .resume__actions { display: flex; flex-wrap: wrap; gap: var(--sp-3); }
+  .resume__meta { color: inherit; opacity: 0.75; }
+
+  .timeline {
+    position: relative;
+    display: grid;
+    gap: var(--sp-8);
+    padding-left: var(--sp-8);
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 2px;
+    border-radius: 2px;
+    background: linear-gradient(var(--c-accent), var(--c-accent-2) 70%, var(--c-border));
+  }
+  .timeline__item { position: relative; display: grid; gap: var(--sp-2); }
+  .timeline__item::before {
+    content: "";
+    position: absolute;
+    left: calc(-1 * var(--sp-8) + 1px);
+    top: 0.45rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--c-bg);
+    border: 2px solid var(--c-accent);
+    box-shadow: 0 0 0 4px var(--c-bg);
+  }
+  .timeline__item:first-child::before { background: var(--c-accent); }
+  .timeline__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--sp-1) var(--sp-4);
+  }
+  .timeline__role { font-size: var(--step-1); }
+  .timeline__period { color: var(--c-accent); }
+  .timeline__org { color: var(--c-text); font-weight: 500; }
+  .timeline__points {
+    display: grid;
+    gap: var(--sp-1);
+    padding-left: 1.1rem;
+    color: var(--c-text-muted);
+    font-size: var(--step--1);
+    max-width: var(--measure);
+  }
+  .timeline__points li::marker { color: var(--c-accent); }
+
+  .resume__subhead {
+    margin: var(--sp-12) 0 var(--sp-4);
+    color: var(--c-text-muted);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .edu { display: grid; gap: var(--sp-3); }
+  .edu__item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--sp-2) var(--sp-4);
+    padding: var(--sp-4) var(--sp-6);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-md);
+    background: color-mix(in oklab, var(--c-surface) 65%, transparent);
+  }
+  .edu__school { font-weight: 600; }
+  .edu__detail { color: var(--c-text-muted); font-size: var(--step--1); }
+  .edu__period { color: var(--c-accent); }
+
+  @media (min-width: 64rem) {
+    .resume__grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--sp-16); }
+    .resume__aside { position: sticky; top: calc(var(--header-h) + var(--sp-8)); }
+  }
+}
